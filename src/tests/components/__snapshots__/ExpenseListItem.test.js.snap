@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpenseList with expenses 1`] = `
+<tr>
+  <td>
+    1
+  </td>
+  <td>
+    Gum
+  </td>
+  <td />
+  <td>
+    195
+  </td>
+  <td>
+    0
+  </td>
+  <td>
+    <NavLink
+      activeClassName="is-active"
+      to="/edit/1"
+    >
+      Edit
+    </NavLink>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+       | Remove
+    </a>
+  </td>
+</tr>
+`;

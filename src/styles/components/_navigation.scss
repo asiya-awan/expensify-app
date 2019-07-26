@@ -1,0 +1,13 @@
+.nav{
+    list-style: none;
+    background: rgb(175, 175, 240);
+    color: rgb(91, 26, 165);
+    padding:1.2rem;
+    border-bottom: 2px solid darken(rgb(91, 26, 165), 10%);
+}
+.nav-item, a{
+    display: inline;
+    text-decoration: none;
+
+    margin-right:1rem;
+}
