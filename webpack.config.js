@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => {
-  //console.log("env: get env value from build:prod script(--env production): ", env);
+  console.log("env: get env value from build:prod script(--env production): ", env);
   const isProduction = env === 'production';
   const CSSExtract = new MiniCssExtractPlugin({ filename: 'styles.css' });
   return {

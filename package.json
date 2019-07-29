@@ -7,7 +7,9 @@
         "build:dev": "webpack --watch",
         "build:prod": "webpack -p --env production",
         "dev-server": "webpack-dev-server",
-        "test": "jest --config=jest.config.json --watchAll "
+        "test": "jest --config=jest.config.json --watchAll ",
+        "start": "node server/server.js",
+        "heroku-postbuild": "npm run build:prod"
     },
     "author": "Asia Awan",
     "license": "ISC",
@@ -22,6 +24,7 @@
         "enzyme": "^3.10.0",
         "enzyme-adapter-react-16": "^1.0.0",
         "enzyme-to-json": "^3.3.5",
+        "express": "^4.17.1",
         "jest": "^24.8.0",
         "live-server": "^1.2.1",
         "mini-css-extract-plugin": "^0.8.0",
