@@ -12,7 +12,7 @@ export const ExpenseListItem =
         <td>{description}</td>
         <td>{note}</td>
         <td>{ numeral(amount/100).format('$0,0.00')}</td>
-        <td>{moment(createdAt).format('MM Do, YYYY')}</td>
+        <td>{moment(createdAt).format('MMM Do, YYYY')}</td>
         <td>
             <NavLink 
                 to = {`/edit/${id}`} 
