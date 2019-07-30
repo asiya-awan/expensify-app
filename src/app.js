@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import {addExpense, removeExpense, editExpense } from './actions/expenses';
-import {setStartDate, setEndDate, setTextFilter, sortByAmount, sortByDate} from './actions/filters';
-import getVisibleExpenses from './selectors/expenses';
 import {Provider} from 'react-redux';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import './firebase/firebase';
+
 
 const store = configureStore();
 console.log('Asia');
@@ -20,6 +19,8 @@ const jsx = (
   );
   
   ReactDOM.render(jsx, document.getElementById('app'));
+
+
   
   // const expenseOne = store.dispatch(addExpense({description: 'Rent of Apartment @Latifabad', note: 'note example 1', amount: 100, createdAt: -21000}));
   // const expenseTwo = store.dispatch(addExpense({description: 'Buy Laptop', note: 'note example 2', amount: 10, createdAt: 1000}));
