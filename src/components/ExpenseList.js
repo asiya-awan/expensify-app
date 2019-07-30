@@ -25,6 +25,7 @@ export const ExpenseList = (props) => (
                     <ExpenseListItem key= {expense.id} {...expense}/>           
                 ))
             }
+            
         </tbody>
         </table>
     </div>

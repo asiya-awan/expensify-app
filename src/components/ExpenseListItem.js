@@ -7,24 +7,28 @@ import numeral from 'numeral';
 
 export const ExpenseListItem = 
     ({dispatch, id, description, note, amount, createdAt}) => (
-    <tr>
-        <td>{id}</td>
-        <td>{description}</td>
-        <td>{note}</td>
-        <td>{ numeral(amount/100).format('$0,0.00')}</td>
-        <td>{moment(createdAt).format('MMM Do, YYYY')}</td>
-        <td>
-            <NavLink 
-                to = {`/edit/${id}`} 
-                activeClassName="is-active">Edit
-            </NavLink>
-        {/* user # to not reload page */}
-            <a href = '#' onClick = {() => (              
-              dispatch(removeExpense({ id }))
-            )}> | Remove</a>
-        </td>
-    </tr>
-)
+ 
+            <tr>
+                <td>{id}</td>
+                <td>{description}</td>
+                <td>{note}</td>
+                <td>{ numeral(amount/100).format('$0,0.00')}</td>
+                <td>{moment(createdAt).format('MMM Do, YYYY')}</td>
+                <td>
+                    <NavLink 
+                        to = {`/edit/${id}`} 
+                        activeClassName="is-active">Edit
+                    </NavLink>
+                {/* user # to not reload page */}
+                    <a href = '#' onClick = {() => (              
+                    dispatch(removeExpense({ id }))
+                    )}> | Remove</a>
+                </td>
+            </tr>
+            
+    
+     
+);
 export default connect()(ExpenseListItem); //dispatch
 
 

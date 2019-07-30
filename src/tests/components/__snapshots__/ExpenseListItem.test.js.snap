@@ -10,10 +10,10 @@ exports[`should render ExpenseList with expenses 1`] = `
   </td>
   <td />
   <td>
-    195
+    $1.95
   </td>
   <td>
-    12 31st, 1969
+    Dec 31st, 1969
   </td>
   <td>
     <NavLink
