@@ -1,4 +1,43 @@
+// database.ref('expenses')
+//     .once('value')
+//     .then((snapshot) => {
+//         const expenses = [];     
+//         snapshot.forEach((childSnapshot) => {
+          
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()         
+//         });
+//     });
+//     console.log('once: ',expenses);
+// });
 
+
+// database.ref('expenses')
+//     .on('value',  (snapshot) => {
+//         const expenses = [];    
+//         snapshot.forEach((childSnapshot) => {
+          
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()         
+//         });
+//     });
+//     console.log('on - db changed',expenses);
+// });
+
+// //child_removed
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//     console.log('Child Removed',snapshot.key, snapshot.val());
+// });
+
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//     console.log('child_changed',snapshot.key, snapshot.val());
+// });
+
+// database.ref('expenses').on('child_added', (snapshot) => {
+//     console.log('child_added',snapshot.key, snapshot.val());
+// });
 
 // database.ref('expenses').push( {
 //     description: 'buy Gum',
