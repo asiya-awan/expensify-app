@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { removeExpense } from '../actions/expenses';
+import { startRemoveExpense } from '../actions/expenses';
 import moment from 'moment';
 import numeral from 'numeral';
 
@@ -21,7 +21,7 @@ export const ExpenseListItem =
                     </NavLink>
                 {/* user # to not reload page */}
                     <a href = '#' onClick = {() => (              
-                    dispatch(removeExpense({ id }))
+                    dispatch(startRemoveExpense({ id }))
                     )}> | Remove</a>
                 </td>
             </tr>
