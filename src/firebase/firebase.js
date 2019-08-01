@@ -12,6 +12,12 @@ const config = {
 };
 
 firebase.initializeApp(config);
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+googleAuthProvider.setCustomParameters({
+    'prompt': 'select_account'
+});
+
 const database = firebase.database();
 
-export {firebase, database as default };
+export {firebase, googleAuthProvider, database as default };

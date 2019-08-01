@@ -33,7 +33,7 @@ test('should setup remove expense action object', () => {
 
 test('should remove expense from firebase', (done) => {
   const store = createMockStore({});
-  const id = expenses[2].id;
+  const id = expenses[1].id;
   store.dispatch(startRemoveExpense({ id })).then(() => {
     const actions = store.getActions();
     expect(actions[0]).toEqual({
