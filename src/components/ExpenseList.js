@@ -4,41 +4,30 @@ import ExpenseListItem  from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
 
 export const ExpenseList = (props) => (
-    
-    <div>    
-        <h2>Expense List</h2>
-        
-        <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Note</th>
-                <th>Amount</th>
-                <th>CreatedAt</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                props.expenses.map((expense) => (
-                    <ExpenseListItem key= {expense.id} {...expense}/>           
-                ))
-            }
-            
-        </tbody>
-        </table>
+    <div className="content-container">
+        <div className="list-header">
+            <div className="show-for-mobile">Expenses</div>
+            <div className="show-for-desktop">Expense</div>
+            <div className="show-for-desktop">Amount</div>
+        </div>
+        <div className="list-body">     {
+            props.expenses.length === 0 ? (
+                <div><p className="list-item list-item--message">No expenses</p></div>
+            ) : (
+                props.expenses.map((expense) => (<ExpenseListItem key={expense.id} {...expense}/>))
+            )
+        }
+        </div>
     </div>
 );
 
 const mapStateToProps = (state) => {
     return {
-        expenses: selectExpenses(state.expenses, state.filters),
-        filters: state.filters
+        expenses: selectExpenses(state.expenses, state.filters)
     };
 };
 
-export default connect(mapStateToProps)(ExpenseList);
+export default connect(mapStateToProps)(ExpenseList)
 
 // export const ExpenseList = (props) => (
 //   <div>
