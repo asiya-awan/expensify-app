@@ -19,7 +19,6 @@ exports[`should render Header correctly 1`] = `
   </NavLink>
   <button
     onClick={[Function]}
-    value="Logout"
   >
     Logout
   </button>
