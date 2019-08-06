@@ -2,16 +2,39 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startRemoveExpense, startEditExpense, removeExpense } from '../actions/expenses';
+import RemoveModal from '../components/RemoveModal';
 
 export class EditExpensePage extends React.Component {
+
+  state = {
+    selectedExpenseToRemove: undefined
+  };
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
     this.props.history.push('/dashboard');
   };
+
+  // onRemove = () => {
+   
+  //   // this.props.startRemoveExpense({ id: this.props.expense.id });
+  //   // this.props.history.push('/dashboard');
+  // };
   onRemove = () => {
-    this.props.startRemoveExpense({ id: this.props.expense.id });
-    this.props.history.push('/dashboard');
+    this.setState(()=> ({
+      selectedExpenseToRemove: this.props.expense
+    }));    
   };
+
+  handleConfirmRemove = () => {
+    this.props.startRemoveExpense({ id: this.props.expense.id });
+    //this.setState(()=> ({selectedExpenseToRemove: undefined}))
+    this.props.history.push('/dashboard');
+  }
+
+  handleClearSelectedExpenseToRemove =() => {
+    this.setState(()=> ({selectedExpenseToRemove: undefined}))
+  }
+
   render() {
     return (
       <div>
@@ -28,6 +51,11 @@ export class EditExpensePage extends React.Component {
           <button className="button button--secondary" onClick={this.onRemove}>Remove Expense</button>
 
         </div>
+        <RemoveModal 
+          selectedExpenseToRemove={this.state.selectedExpenseToRemove}
+          handleClearSelectedExpenseToRemove={this.handleClearSelectedExpenseToRemove}
+          handleConfirmRemove={this.handleConfirmRemove}
+          />
       </div>
     );
   }
@@ -43,26 +71,4 @@ const mapDispatchToProps = (dispatch, props) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
-
-
-// const EditExpensePage = (props) => {
-//     return (
-//     <div>
-//       <h3>Edit Expense</h3>
-//       <ExpenseForm 
-//         expense = {props.expense}
-//         onSubmitP={(expense) => {
-//           console.log('Updated', expense);
-//           props.dispatch(editExpense(props.expense.id, expense));
-//           props.history.push('/')
-//         }}
-//       />
-//       <button  onClick = {() => {
-//         props.dispatch(removeExpense({id: props.expense.id }));
-//         props.history.push('/')
-//       }}>  Remove
-//       </button>
-//     </div>
-//   );
-// }
 

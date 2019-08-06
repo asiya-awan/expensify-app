@@ -17,3 +17,8 @@
 .button--secondary {
     background: #888;
 }
+
+.buttons {
+    display:flex;
+    justify-content: space-around;
+}

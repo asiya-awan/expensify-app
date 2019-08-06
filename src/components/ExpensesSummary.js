@@ -5,14 +5,15 @@ import  selectExpensesTotal  from '../selectors/expenses-total';
 import numeral from 'numeral';
 import { Link } from 'react-router-dom';
 
-export const ExpensesSummary = ({expensesCount,expensesTotal }) => {
-    const expenseWord = expensesCount === 1 ? 'expense' :'expenses';
-    const formattedExpensesTotal = numeral(expensesTotal/100).format('$0,0.00');
+export const ExpensesSummary = ({visibleExpensesCount, visibleExpensesTotal,  invisibleExpensesCount }) => {
+    const expenseWord = visibleExpensesCount === 1 ? 'expense' :'expenses';
+    const formattedExpensesTotal = numeral(visibleExpensesTotal/100).format('$0,0.00');
 
     return (
         <div className= "page-header">
             <div className="content-container">
-                <h1 className="page-header__title"> Viewing <span> {expensesCount}  </span> {expenseWord} totalling <span> {formattedExpensesTotal} </span> </h1> 
+                <h1 className="page-header__title"> Viewing <span> {visibleExpensesCount}  </span> {expenseWord} totalling <span> {formattedExpensesTotal} </span> </h1> 
+                { invisibleExpensesCount> 0 && <p>There are <strong> {invisibleExpensesCount} </strong> expenses which are hidden because of applied filter.</p>} 
                 <div className="page-header__actions">
                     <Link to="/create" className="button">Create Expense</Link>
                 </div>
@@ -23,11 +24,15 @@ export const ExpensesSummary = ({expensesCount,expensesTotal }) => {
 
 const mapStateToProps = (state) => {
     const visibleExpenses = selectExpenses(state.expenses, state.filters);
+    const totalExpenses = selectExpenses(state.expenses, {text: '', sortBy: 'date', startDate:'', endDate:''});
+    console.log('Total Expenses',totalExpenses.length);
+    console.log('Visible Expenses',visibleExpenses.length);
+    const invisibleExpensesCount= (totalExpenses.length)-(visibleExpenses.length);
     return{
-        expensesCount: visibleExpenses.length,
-        expensesTotal: selectExpensesTotal(visibleExpenses)
+        visibleExpensesCount: visibleExpenses.length,
+        visibleExpensesTotal: selectExpensesTotal(visibleExpenses),
+        invisibleExpensesCount: invisibleExpensesCount
     }
+
 }
-
 export default connect(mapStateToProps)(ExpensesSummary);
-
