@@ -9,15 +9,13 @@ export const startLoginGoogle = () => {
     return () => {      
             return firebase.auth().signInWithPopup(googleAuthProvider);          
        }
-        
     };
 
-export const startLoginGitHub = () => {
-    return () => {
-        return firebase.auth().signInWithPopup(gitHubAuthProvider);
-        
-    };
-};
+// export const startLoginGitHub = () => {
+//     return () => {      
+//             return firebase.auth().signInWithPopup(gitHubAuthProvider);          
+//         }
+//     };
 
 export const logout = () => ({
     type: 'LOGOUT'

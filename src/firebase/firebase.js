@@ -19,7 +19,7 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-var gitHubAuthProvider = new firebase.auth.GithubAuthProvider();
+const gitHubAuthProvider = new firebase.auth.GithubAuthProvider();
 
 googleAuthProvider.setCustomParameters({
     'prompt': 'select_account'
